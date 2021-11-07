@@ -1,6 +1,7 @@
 import React from 'react';
 import './ListItems.css';
 import 'font-awesome/css/font-awesome.css';
+import FlipMove from 'react-flip-move';
 
 function ListItems(props) {
     const listItems = props.items.map(
@@ -23,7 +24,9 @@ function ListItems(props) {
     });
     return (
         <div>
-            {listItems}
+            <FlipMove duration={300} easing="ease-in-out">
+                {listItems}
+            </FlipMove>
         </div>
     );
 }
