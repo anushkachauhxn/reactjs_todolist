@@ -8,7 +8,11 @@ function ListItems(props) {
             return (
                 <div className="list-item" key={item.key}>
                     <p>
-                        {item.text}
+                        <input 
+                            type="text" id={item.key} 
+                            value={item.text} 
+                            onChange={ (e) => {props.setUpdate(e.target.value, item.key)} }
+                        />
                         <span 
                             className="fa fa-trash" 
                             onClick={ () => {props.deleteItem(item.key)} }

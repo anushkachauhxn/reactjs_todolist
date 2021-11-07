@@ -16,6 +16,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.setUpdate = this.setUpdate.bind(this);
   }
   handleInput(e) {
     this.setState({
@@ -45,6 +46,18 @@ class App extends Component {
       items: filteredItems
     })
   }
+  setUpdate(text, key) {
+    const UpdatedItems = this.state.items;
+    UpdatedItems.map((item) => {
+      if (item.key === key) {
+        item.text=text;
+      }
+    });
+
+    this.setState({
+      items: UpdatedItems
+    });
+  }
   render () {
     return (
       <div className="container">
@@ -61,6 +74,7 @@ class App extends Component {
         <ListItems 
           items={this.state.items} 
           deleteItem={this.deleteItem}
+          setUpdate={this.setUpdate}
         />
       </div>
     );
