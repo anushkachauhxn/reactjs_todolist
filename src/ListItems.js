@@ -9,7 +9,10 @@ function ListItems(props) {
                 <div className="list-item" key={item.key}>
                     <p>
                         {item.text}
-                        <span className="fa fa-trash" />
+                        <span 
+                            className="fa fa-trash" 
+                            onClick={ () => {props.deleteItem(item.key)} }
+                        />
                     </p>
                 </div>
             );

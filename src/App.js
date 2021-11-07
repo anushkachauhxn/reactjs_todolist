@@ -15,6 +15,7 @@ class App extends Component {
     }
     this.handleInput = this.handleInput.bind(this);
     this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
   handleInput(e) {
     this.setState({
@@ -38,6 +39,12 @@ class App extends Component {
       })
     }
   }
+  deleteItem(key) {
+    const filteredItems = this.state.items.filter((item) => item.key!==key);
+    this.setState({
+      items: filteredItems
+    })
+  }
   render () {
     return (
       <div className="container">
@@ -51,7 +58,10 @@ class App extends Component {
             <button type="submit">Add</button>
           </form>
         </header>
-        <ListItems items={this.state.items} />
+        <ListItems 
+          items={this.state.items} 
+          deleteItem={this.deleteItem}
+        />
       </div>
     );
   }
